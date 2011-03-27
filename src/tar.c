@@ -279,6 +279,7 @@ enum
   IGNORE_CASE_OPTION,
   IGNORE_COMMAND_ERROR_OPTION,
   IGNORE_FAILED_READ_OPTION,
+  IGNORE_MISSING_OPTION,
   INDEX_FILE_OPTION,
   KEEP_NEWER_FILES_OPTION,
   LEVEL_OPTION,
@@ -426,6 +427,8 @@ static struct argp_option options[] = {
    N_("dump level for created listed-incremental archive"), GRID+1 },
   {"ignore-failed-read", IGNORE_FAILED_READ_OPTION, 0, 0,
    N_("do not exit with nonzero on unreadable files"), GRID+1 },
+  {"ignore-missing", IGNORE_MISSING_OPTION, 0, 0,
+   N_("do not exit with nonzero on missing input files"), GRID+1 },
   {"occurrence", OCCURRENCE_OPTION, N_("NUMBER"), OPTION_ARG_OPTIONAL,
    N_("process only the NUMBERth occurrence of each file in the archive;"
       " this option is valid only in conjunction with one of the subcommands"
@@ -1894,6 +1897,10 @@ parse_opt (int key, char *arg, struct argp_state *state)
 
     case IGNORE_FAILED_READ_OPTION:
       ignore_failed_read_option = true;
+      break;
+
+    case IGNORE_MISSING_OPTION:
+      ignore_missing_option = true;
       break;
 
     case KEEP_NEWER_FILES_OPTION:

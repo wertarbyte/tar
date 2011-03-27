@@ -885,7 +885,7 @@ seek_diag_details (char const *name, off_t offset)
 void
 stat_diag (char const *name)
 {
-  if (ignore_failed_read_option)
+  if (ignore_failed_read_option || (errno == ENOENT && ignore_missing_option))
     stat_warn (name);
   else
     stat_error (name);

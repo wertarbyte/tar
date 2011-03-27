@@ -164,6 +164,8 @@ GLOBAL gid_t group_option;
 
 GLOBAL bool ignore_failed_read_option;
 
+GLOBAL bool ignore_missing_option;
+
 GLOBAL bool ignore_zeros_option;
 
 GLOBAL bool incremental_option;
